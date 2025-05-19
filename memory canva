@@ -1,0 +1,239 @@
+    body {
+        font-family: 'Nunito', sans-serif;
+        background: linear-gradient(135deg, #c4b5fd, #a78bfa);
+        min-height: 100vh;
+    }
+    
+    h1, h2, h3 {
+        font-family: 'Bubblegum Sans', cursive;
+    }
+    
+    .card {
+        perspective: 1000px;
+        transition: transform 0.3s;
+        border-radius: 16px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card:hover {
+        transform: scale(1.05);
+    }
+    
+    .card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+        border-radius: 16px;
+    }
+    
+    .card.flipped .card-inner {
+        transform: rotateY(180deg);
+    }
+    
+    .card-front, .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 16px;
+        overflow: hidden;
+    }
+    
+    .card-front {
+        background: linear-gradient(135deg, #93c5fd, #60a5fa);
+        color: white;
+    }
+    
+    .card-back {
+        background-color: white;
+        color: #4338ca;
+        transform: rotateY(180deg);
+    }
+    
+    .hebrew {
+        font-family: 'Arial', sans-serif;
+    }
+    
+    .student-row:nth-child(even) {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .student-row:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .card-number {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        background-color: rgba(255, 255, 255, 0.9);
+        color: #3b82f6;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    
+    @keyframes success-pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+    
+    .success-animation {
+        animation: success-pulse 0.5s ease-in-out;
+    }
+    
+    .scoreboard {
+        position: sticky;
+        top: 1rem;
+    }
+    
+    .point-btn {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        transition: all 0.2s;
+    }
+    
+    .point-btn:hover {
+        transform: scale(1.1);
+    }
+    
+    .character {
+        transition: transform 0.3s ease;
+    }
+    
+    .character:hover {
+        transform: translateY(-5px);
+    }
+    
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 50;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+    
+    .modal.show {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    
+    .modal-content {
+        background-color: white;
+        border-radius: 16px;
+        padding: 24px;
+        width: 90%;
+        max-width: 500px;
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+    }
+    
+    .modal.show .modal-content {
+        transform: scale(1);
+    }
+    
+    .saved-game-item {
+        transition: all 0.2s ease;
+    }
+    
+    .saved-game-item:hover {
+        background-color: rgba(99, 102, 241, 0.1);
+    }
+    
+    /* Jumping Kid Animation */
+    @keyframes jump {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-100px) rotate(10deg); }
+        100% { transform: translateY(0); }
+    }
+    
+    .jumping-kid-container {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 40;
+        pointer-events: none;
+        display: flex;
+        justify-content: center;
+        perspective: 1000px;
+    }
+    
+    .jumping-kid {
+        animation: jump 1s ease-in-out;
+        transform-origin: bottom center;
+    }
+    
+    .celebration-text {
+        position: absolute;
+        top: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: 'Bubblegum Sans', cursive;
+        font-size: 24px;
+        color: #4338ca;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        white-space: nowrap;
+        opacity: 0;
+        animation: fade-up 1s ease-out forwards;
+    }
+    
+    @keyframes fade-up {
+        0% { opacity: 0; transform: translate(-50%, 20px); }
+        50% { opacity: 1; transform: translate(-50%, -10px); }
+        100% { opacity: 0; transform: translate(-50%, -40px); }
+    }
+    
+    /* Sound button styles */
+    .sound-toggle {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        z-index: 30;
+        transition: all 0.3s ease;
+    }
+    
+    .sound-toggle:hover {
+        transform: scale(1.1);
+    }
+    
+    .sound-toggle svg {
+        width: 24px;
+        height: 24px;
+    }
+</style>
